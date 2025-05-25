@@ -1,3 +1,7 @@
+## NAME: AMALJOSH MAADHAV J
+## REG NO: 212223230012
+
+
 # Ex.No:1a  			Study of Socket Programming
 
 ## Aim: 
@@ -52,6 +56,39 @@ Socket programming finds applications in various domains, including web developm
 3.	File Transfer Protocol: Protocols like FTP (File Transfer Protocol) utilize socket programming for transferring files between a client and a server.
 4.	Networked Games: Online multiplayer games rely on socket programming to facilitate communication between game clients and servers.
 5.	RPC mechanisms: which allow processes to execute code on a remote server, often use socket programming for communication.
+
+## PROGRAMS
+# Server
+~~~
+import socket
+s=socket.socket()
+s.connect(('localhost',8000))
+print(s.getsockname())
+print(s.recv(1024).decode())
+s.send("acknowledgement recived from the server".encode())
+~~~
+# Client
+~~~
+import socket
+from datetime import datetime
+s=socket.socket()
+s.bind(('localhost',8000))
+s.listen(5)
+c,addr=s.accept()
+print("Client Address : ",addr)
+now = datetime.now()
+c.send(now.strftime("%d/%m/%Y %H:%M:%S").encode())
+ack=c.recv(1024).decode()
+if ack:
+ print(ack)
+c.close()
+~~~
+## OUTPUT
+# Client
+![Screenshot 2025-03-22 135840](https://github.com/user-attachments/assets/d812ae1d-b76d-4942-a111-f81fe9c3cb84)
+
+# Server
+![Screenshot 2025-03-22 135824](https://github.com/user-attachments/assets/322490d6-7c00-4991-a491-6ef9fda1a882)
 
 
 ## Result:
